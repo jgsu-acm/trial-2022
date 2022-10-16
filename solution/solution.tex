@@ -1,12 +1,20 @@
 \documentclass{../cpct/ctsol}
 
-\title{xxxxxx}
-\date{yyyy 年 mm 月 dd 日}
+\title{ACM 算法实验室 22 届成员选拔赛}
+\date{2022 年 10 月 16 日}
 
 \begin{document}
 
 \maketitle
-\addsolution{A+B Problem}{aaa}{模拟}
+\addsolution{Zxilly 的饼}{Algor}{模拟}
+\addsolution{置换反应}{AgOH}{模拟}
+\addsolution{集和}{AgOH}{思维}
+\addsolution{购物}{GlenBzc}{贪心，前缀和}
+\addsolution{队形摆好}{Zxilly}{贪心}
+\addsolution{最近等值对}{Algor}{贪心，\texttt{map}}
+\addsolution{井字棋}{Algor}{模拟}
+\addsolution{表演型卷王}{Tifa}{区间并}
+\addsolution{跃迁}{AgOH}{期望 DP}
 
 \section*{题目概览}
 
@@ -15,10 +23,99 @@
 \makesolution
 \section*{做法}
 
-\verb|cout|
+根据题意模拟即可。
 
 \section*{标程}
 
 \std{A}
+
+\makesolution
+\section*{做法}
+
+根据题意模拟即可。
+
+\section*{标程}
+
+\std{B}
+
+\makesolution
+\section*{做法}
+
+易发现 $A+A = \{2,3,\cdots,2n \}$，故 $|A+A|=2n-1$。
+
+\section*{标程}
+
+\std{C}
+
+\makesolution
+\section*{做法}
+
+显然我们每次选择最贵的 $x_i$ 件购买即可使得这 $x_i$ 件中最便宜的 $y_i$ 总和最大，故我们首先对 $a_i$ 进行升序排序。
+
+又因为有多次询问，每次询问相当于询问 $[n-x+1, n-x+y]$ 的区间和，故使用前缀和优化即可，时间复杂度 $O(n+q)$。
+
+\section*{标程}
+
+\std{D}
+
+\makesolution
+\section*{做法}
+
+\verb|cout|
+
+\section*{标程}
+
+\std{E}
+
+\makesolution
+\section*{做法}
+
+\verb|cout|
+
+\section*{标程}
+
+\std{F}
+
+\makesolution
+\section*{做法}
+
+\verb|cout|
+
+\section*{标程}
+
+\std{G}
+
+\makesolution
+\section*{做法}
+
+\verb|cout|
+
+\section*{标程}
+
+\std{H}
+
+\makesolution
+\section*{做法}
+
+经典的随机游走模型，采用期望 DP 处理：
+
+\begin{itemize}
+    \item 状态设计：$dp[i]$ 代表从 $i$ 跃迁到 $i+1$ 期望花费的时长
+    \item 初始状态：$dp[1] = 1$
+    \item 转移方程：$$dp[i] = \cfrac{(1+dp[i-1]+1)+1}{2}$$
+    \item 最终结果：$$\sum\limits_{i=1}^{n-1} dp[i]$$
+\end{itemize}
+
+转移方程中分子前半部分代表先走回 $i-1$ 再走到 $i$ 然后再走到 $i+1$，后半部分代表直接走到 $i+1$。
+
+可以模拟分数，也可以推出 $dp$ 的通项公式及前 $n$ 项和公式直接算出结果：
+
+通项公式：$dp[i] = 3-2^{2-i}$
+
+前 $n$ 项和公式：$3n+2^{2-i}-4$
+
+\section*{标程}
+
+\std{I}
 
 \end{document}
