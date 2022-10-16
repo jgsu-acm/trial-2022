@@ -80,7 +80,9 @@
 \makesolution
 \section*{做法}
 
-\verb|cout|
+注意到值域很大（$1 \leq a_i \leq {10}^9$），故我们可以使用一个 \lstinline{map} 或 \lstinline{unordered_map} 维护每个出现过的值之前出现过的位置。
+
+一个数字 $a_i$ 若出现三次，出现位置分别为 $a,b,c$，之前的 $q-p$ 最小值为 $b-a$，我们只需要判断 $c-b$ 是否能更新最小值即可，而不需要判断 $c-a$（因为 $c-b$ 一定不会比 $c-a$ 更大），故对于每个值我们只需维护其上一次出现的位置即足够。
 
 \section*{标程}
 
